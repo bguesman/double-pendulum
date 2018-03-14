@@ -2,6 +2,7 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="double_pendulum.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   </head>
   <body>
     <div class="container outer-container">
@@ -10,15 +11,19 @@
       <div class="container sliders-container">
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="0" class="slider" id="l1" onInput="set_l1()">
+          <p style="text-align:center;">Length 1</p>
         </div>
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="0" class="slider" id="l2" onInput="set_l2()">
+          <p style="text-align:center;">Length 2</p>
         </div>
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="50" class="slider" id="m1" onInput="set_m1()">
+          <p style="text-align:center;">Mass 1</p>
         </div>
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="50" class="slider" id="m2" onInput="set_m2()">
+          <p style="text-align:center;">Mass 2</p>
         </div>
         <!-- <div class="slidecontainer">
           <input type="range" min="1" max="100" value="50" class="slider" id="th1" onInput="set_th_1()">

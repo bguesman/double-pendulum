@@ -4,6 +4,13 @@ body, html {
   height: 100%;
 }
 
+p {
+  color: rgb(193, 193, 193);
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+}
+
 .container {
   display: flex;
 }
@@ -20,6 +27,7 @@ body, html {
 }
 
 .sliders-container {
+  padding-top: 10px;
   width: 100%;
   background-color: rgb(24, 30, 33);
   flex-direction: column;
@@ -28,7 +36,6 @@ body, html {
 /* For slider implementation */
 
 .slidecontainer {
-    padding-top: 10px;
     width: 100%;
 }
 
