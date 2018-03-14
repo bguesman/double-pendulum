@@ -1,32 +1,40 @@
 const g = 9.8;        // meters per second
 const pixels_per_meter = 100;
 
-var canvas_width = 800;
-var canvas_height = 500;
+var canvas_width = (2 / 3) * window.innerWidth;
+var canvas_height = window.innerHeight + 1;
 
 var framerate = 60;   // frames per second
 var delta_t = 1.0;    // time scale
 var th_1 = 3.0;       // our first generalized coordinate
 var th_1_dot = 0.0;   // and its velocity
-var th_2 = 0;         // our second generalized coordinate
+var th_2 = 0.7;       // our second generalized coordinate
 var th_2_dot = 0;     // and its velocity
 
-var l_1 = 1.0;        // meters
-var l_2 = 1.0;        // meters
-var m_1 = 4;          // kilograms
-var m_2 = 4;          // kilograms
+var l_1 = 0.8;        // meters
+var l_2 = 0.8;        // meters
+var m_1 = 9;          // kilograms
+var m_2 = 9;          // kilograms
 
-var pivot_x = canvas_width / 2; // pixels
-var pivot_y = canvas_height / 2; // pixels
+var pivot_x = canvas_width / 2;   // pixels
+var pivot_y = canvas_height / 2;  // pixels
+
+var show_path = false;            // do we display the paths?
+
+var canvas;           // p5 canvas
 
 function setup() {
-  createCanvas(canvas_width, canvas_height);
+  canvas = createCanvas(canvas_width, canvas_height);
+  canvas.parent('p5-container');
   frameRate(framerate);
   background(48, 47, 57);
 }
 
 function draw() {
-  // clear();
+  if (!show_path) {
+    clear();
+    background(48, 47, 57);
+  }
   first_pendulum_x = pivot_x + meters_to_pixels(l_1 * Math.sin(th_1));
   first_pendulum_y = pivot_y + meters_to_pixels(l_1 * Math.cos(th_1));
   second_pendulum_x = first_pendulum_x +
@@ -40,11 +48,12 @@ function draw() {
   line(first_pendulum_x, first_pendulum_y,
         second_pendulum_x, second_pendulum_y)
   noStroke();
-  fill(20, 80, 180);
   // first pendulum bob
-  ellipse(first_pendulum_x, first_pendulum_y, 15, 15)
+  fill(30, 90, 200);
+  ellipse(first_pendulum_x, first_pendulum_y, m_1 * 3, m_1 * 3)
   // second pendulum bob
-  ellipse(second_pendulum_x, second_pendulum_y, 15, 15)
+  fill(201, 36, 118);
+  ellipse(second_pendulum_x, second_pendulum_y, m_2 * 3, m_2 * 3)
   time_step();
 }
 
@@ -74,4 +83,28 @@ function theta_2_double_dot() {
 
 function meters_to_pixels(meters) {
   return meters * pixels_per_meter;
+}
+
+function set_l1() {
+  l_1 = (document.getElementById("l1").value / 100.0) * 2 + 0.8
+}
+
+function set_l2() {
+  l_2 = (document.getElementById("l2").value / 100.0) * 2 + 0.8
+}
+
+function set_m1() {
+  m_1 = (document.getElementById("m1").value / 100.0) * 10 + 4
+}
+
+function set_m2() {
+  m_2 = (document.getElementById("m2").value / 100.0) * 10 + 4
+}
+
+function set_th_1() {
+  th_1 = (document.getElementById("th1").value / 100.0) * 6.26
+}
+
+function set_th_2() {
+  th_2 = (document.getElementById("th2").value / 100.0) * 6.26
 }

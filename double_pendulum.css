@@ -1,0 +1,64 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+}
+
+.outer-container {
+  flex-direction: row;
+  flex-grow: 2;
+  flex-wrap: nowrap;
+}
+
+.p5-container {
+  padding: 0;
+  margin: 0;
+}
+
+.sliders-container {
+  width: 100%;
+  background-color: rgb(24, 30, 33);
+  flex-direction: column;
+}
+
+/* For slider implementation */
+
+.slidecontainer {
+    padding-top: 10px;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #424861;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #2c72e8;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}

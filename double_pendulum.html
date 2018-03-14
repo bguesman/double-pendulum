@@ -1,8 +1,33 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="double_pendulum.css">
   </head>
   <body>
-    <script src="double_pendulum.js"></script>
+    <div class="container outer-container">
+      <div class='container p5-container' id='p5-container'>
+      </div>
+      <div class="container sliders-container">
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="0" class="slider" id="l1" onInput="set_l1()">
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="0" class="slider" id="l2" onInput="set_l2()">
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="m1" onInput="set_m1()">
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="m2" onInput="set_m2()">
+        </div>
+        <!-- <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="th1" onInput="set_th_1()">
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="th2" onInput="set_th_2()">
+        </div> -->
+      </div>
+    </div>
+  <script src="double_pendulum.js"></script>
   </body>
 </html>
