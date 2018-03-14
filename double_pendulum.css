@@ -4,11 +4,40 @@ body, html {
   height: 100%;
 }
 
+.control-button {
+  color: rgb(223, 222, 222);
+  background-color: rgb(37, 78, 223);
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  margin: 8;
+  padding: 10;
+  opacity: 0.8;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 5px;
+}
+
+.control-button:hover {
+    opacity: 1;
+}
+
+.control-button-container {
+  height: 33%;
+}
+
 p {
   color: rgb(193, 193, 193);
   text-align: center;
   font-family: 'Raleway', sans-serif;
-  font-size: 20px;
+  font-size: 17px;
+  margin: 4;
 }
 
 .container {
@@ -24,6 +53,8 @@ p {
 .p5-container {
   padding: 0;
   margin: 0;
+  height: 100%;
+  background-color: rgb(48, 47, 57);
 }
 
 .sliders-container {
@@ -31,12 +62,16 @@ p {
   width: 100%;
   background-color: rgb(24, 30, 33);
   flex-direction: column;
+  flex-grow: 6;
+  flex-wrap: nowrap;
+  height: 100%;
 }
 
 /* For slider implementation */
 
 .slidecontainer {
     width: 100%;
+    padding-top: 10;
 }
 
 .slider {
@@ -61,6 +96,7 @@ p {
     height: 25px;
     background: #2c72e8;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .slider::-moz-range-thumb {
@@ -68,4 +104,5 @@ p {
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
+    border-radius: 2px;
 }

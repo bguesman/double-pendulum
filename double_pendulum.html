@@ -25,6 +25,24 @@
           <input type="range" min="1" max="100" value="50" class="slider" id="m2" onInput="set_m2()">
           <p style="text-align:center;">Mass 2</p>
         </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="delta_t" onInput="set_delta_t()">
+          <p style="text-align:center;">Timescale</p>
+        </div>
+        <div class="control-button-container">
+          <div class="control-button" onclick="stop()">
+            Stop
+          </div>
+          <div class="control-button" onclick="go()">
+            Go
+          </div>
+          <div class="control-button" onclick="reset()">
+            Reset
+          </div>
+          <div class="control-button" onclick="show_paths()" id="show_paths">
+            Show Paths
+          </div>
+        </div>
         <!-- <div class="slidecontainer">
           <input type="range" min="1" max="100" value="50" class="slider" id="th1" onInput="set_th_1()">
         </div>

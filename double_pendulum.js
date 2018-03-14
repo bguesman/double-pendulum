@@ -6,10 +6,16 @@ var canvas_height = window.innerHeight + 1;
 
 var framerate = 60;   // frames per second
 var delta_t = 1.0;    // time scale
-var th_1 = 3.0;       // our first generalized coordinate
-var th_1_dot = 0.0;   // and its velocity
-var th_2 = 0.7;       // our second generalized coordinate
-var th_2_dot = 0;     // and its velocity
+
+var th_1_0 = 3.0;     // initial conditions
+var th_1_dot_0 = 0.0;
+var th_2_0 = 0.7;
+var th_2_dot_0 = 0;
+
+var th_1 = th_1_0;            // our first generalized coordinate
+var th_1_dot = th_1_dot_0;    // and its velocity
+var th_2 = th_2_0;            // our second generalized coordinate
+var th_2_dot = th_2_dot_0;    // and its velocity
 
 var l_1 = 0.8;        // meters
 var l_2 = 0.8;        // meters
@@ -20,6 +26,7 @@ var pivot_x = canvas_width / 2;   // pixels
 var pivot_y = canvas_height / 2;  // pixels
 
 var show_path = false;            // do we display the paths?
+var stopped = false;
 
 var canvas;           // p5 canvas
 
@@ -31,10 +38,11 @@ function setup() {
 }
 
 function draw() {
-  if (!show_path) {
+  if (!show_path && !stopped) {
     clear();
     background(48, 47, 57);
   }
+
   first_pendulum_x = pivot_x + meters_to_pixels(l_1 * Math.sin(th_1));
   first_pendulum_y = pivot_y + meters_to_pixels(l_1 * Math.cos(th_1));
   second_pendulum_x = first_pendulum_x +
@@ -54,7 +62,10 @@ function draw() {
   // second pendulum bob
   fill(201, 36, 118);
   ellipse(second_pendulum_x, second_pendulum_y, m_2 * 3, m_2 * 3)
-  time_step();
+
+  if (!stopped) {
+    time_step();
+  }
 }
 
 function time_step() {
@@ -86,25 +97,76 @@ function meters_to_pixels(meters) {
 }
 
 function set_l1() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   l_1 = (document.getElementById("l1").value / 100.0) * 2 + 0.8
 }
 
 function set_l2() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   l_2 = (document.getElementById("l2").value / 100.0) * 2 + 0.8
 }
 
 function set_m1() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   m_1 = (document.getElementById("m1").value / 100.0) * 10 + 4
 }
 
 function set_m2() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   m_2 = (document.getElementById("m2").value / 100.0) * 10 + 4
 }
 
 function set_th_1() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   th_1 = (document.getElementById("th1").value / 100.0) * 6.26
 }
 
 function set_th_2() {
+  if (stopped) {
+    clear();
+  }
   th_2 = (document.getElementById("th2").value / 100.0) * 6.26
+}
+
+function set_delta_t() {
+  delta_t = (document.getElementById("delta_t").value / 100.0) * 1.8 + 0.1
+}
+
+function stop() {
+  stopped = true;
+}
+
+function go() {
+  stopped = false;
+}
+
+function reset() {
+  th_1 = th_1_0;
+  th_1_dot = th_1_dot_0;
+  th_2 = th_2_0;
+  th_2_dot = th_2_dot_0;
+}
+
+function show_paths() {
+  show_path = !show_path;
+  if (!show_path) {
+    document.getElementById("show_paths").style.backgroundColor = "rgb(37, 78, 223)";
+  } else {
+    document.getElementById("show_paths").style.backgroundColor = "rgb(176, 59, 240)";
+  }
 }
