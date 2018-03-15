@@ -40,6 +40,10 @@ p {
   margin: 4;
 }
 
+img {
+  margin-left: 25%;
+}
+
 .container {
   display: flex;
 }
