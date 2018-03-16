@@ -156,6 +156,10 @@ function go() {
 }
 
 function reset() {
+  if (stopped) {
+    clear();
+    background(48, 47, 57);
+  }
   th_1 = th_1_0;
   th_1_dot = th_1_dot_0;
   th_2 = th_2_0;
@@ -169,4 +173,8 @@ function show_paths() {
   } else {
     document.getElementById("show_paths").style.backgroundColor = "rgb(176, 59, 240)";
   }
+}
+
+function go_to_steam() {
+  window.location = "http://steamwith.us/BrownSTEAM.html";
 }
